@@ -1,7 +1,7 @@
 # RustDesk-ID-Changer
 RustDesk ID Changer
 
-With the powershell script file here, the name of the host computer will automatically be changed to the ID information of the RustDesk remote connection program.
+With the powershell script file here, the ID information of the RustDesk remote connection program will automatically turn into the name of the host computer.
 
 There is no need to reboot.
 
