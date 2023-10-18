@@ -10,3 +10,7 @@ Tested on Windows 7 - 8.1 - 10 and 11.
 It is run as administrator with the following command:
 
 PowerShell.exe -ExecutionPolicy Bypass -File RustDeskID.ps1
+
+![sample](https://github.com/abdullah-erturk/RustDesk-ID-Changer/blob/main/RustDeskID.png)
+
+
