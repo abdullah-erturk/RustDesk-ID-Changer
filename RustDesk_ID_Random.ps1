@@ -16,4 +16,4 @@ $newContent = $fileContent -replace [regex]::Escape($id), $newId
 
 $newContent | Set-Content -Path "C:\Windows\ServiceProfiles\LocalService\AppData\Roaming\RustDesk\config\RustDesk.toml"
 
-Start-Service RustDesk
+Restart-Service RustDesk
