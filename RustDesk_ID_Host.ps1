@@ -4,7 +4,7 @@ taskkill /im rustdesk.exe /f
 
 $id = Get-Content "C:\Windows\ServiceProfiles\LocalService\AppData\Roaming\RustDesk\config\RustDesk.toml" | Select-Object -Index 0
 
-$hostname = hostname
+$hostname = hostname 
 
 Write-Host "Current ID: $id"
 $newId = "id = '$hostname'"
