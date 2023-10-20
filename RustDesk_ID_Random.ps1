@@ -2,7 +2,6 @@ Stop-Service RustDesk
 
 taskkill /im rustdesk.exe /f
 
-# Rastgele 9 karakter uzunluğunda bir sayı oluştur
 $randomId = -join ((48..57) | Get-Random -Count 9 | ForEach-Object {[char]$_})
 
 $id = Get-Content "C:\Windows\ServiceProfiles\LocalService\AppData\Roaming\RustDesk\config\RustDesk.toml" | Select-Object -Index 0
