@@ -23,7 +23,7 @@ echo	 	  1 - Set RustDesk ID with computer name : "%computername%"
 echo.
 echo	 	  2 - Set RustDesk ID with 9-digit random numbers
 echo.
-echo	 	  3 - Set the RustDesk ID to the value you specify
+echo	 	  3 - Set RustDesk ID to the value you specify
 echo.
 echo	 	  4 - Exit
 echo.
