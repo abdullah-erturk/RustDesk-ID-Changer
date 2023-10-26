@@ -5,7 +5,7 @@ RustDesk Github: https://github.com/rustdesk/rustdesk
 
 You will be able to change the RustDesK ID information as you wish with the script.
 
-Detailed Description
+Detailed description for options in script
 
 	Set RustDesk ID with computer name Description:
 With the powershell script file here, the ID information of the RustDesk remote connection program will automatically turn into the name of the host computer.
