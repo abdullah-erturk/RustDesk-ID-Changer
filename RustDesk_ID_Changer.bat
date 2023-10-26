@@ -6,16 +6,14 @@
 
 ::===============================================================================================================
 @echo off
-mode con:cols=88 lines=28
+mode con:cols=90 lines=30
 title RustDesk ID Changer by mephistooo2 ^| www.TNCTR.com
 net file 1>nul 2>nul && goto :Main || powershell -ex unrestricted -Command "Start-Process -Verb RunAs -FilePath '%comspec%' -ArgumentList '/c ""%~fnx0""""'"
 goto :eof
 ::===============================================================================================================
 :Main
+cls
 pushd %temp% >nul 2>&1
-cls
-mode con:cols=90 lines=30
-cls
 echo.
 echo ==========================================================================================
 echo.
