@@ -57,7 +57,6 @@ goto :done
 ::===============================================================================================================
 :ID_Random
 echo.
-@echo off
 echo Stop-Service RustDesk > RustDesk_ID_Random.ps1
 echo taskkill /im rustdesk.exe /f >> RustDesk_ID_Random.ps1
 echo $randomId = -join ((48..57) ^| Get-Random -Count 9 ^| ForEach-Object {[char]$_}) >> RustDesk_ID_Random.ps1
@@ -74,7 +73,6 @@ goto :done
 ::===============================================================================================================
 :ID_UserDefined
 echo.
-@echo off
 echo Stop-Service RustDesk > RustDesk_ID_UserDefined.ps1
 echo taskkill /im rustdesk.exe /f >> RustDesk_ID_UserDefined.ps1
 echo $id = Get-Content "C:\Windows\ServiceProfiles\LocalService\AppData\Roaming\RustDesk\config\RustDesk.toml" ^| Select-Object -Index 0 >> RustDesk_ID_UserDefined.ps1
