@@ -7,7 +7,7 @@ You will be able to change the RustDesK ID information as you wish with the scri
 
 Detailed description for options in script
 
-	Set RustDesk ID with computer name Description:
+	"Set RustDesk ID with computer name" Description:
 With the powershell script file here, the ID information of the RustDesk remote connection program will automatically turn into the name of the host computer.
 
 There is no need to reboot.
@@ -15,13 +15,13 @@ There is no need to reboot.
 RustDesk ID information sometimes does not change after image deployment in computer laboratory environments, the problem will be solved with this script file.
 
 
-	Set RustDesk ID with 9-digit random numbers Description:
+	"Set RustDesk ID with 9-digit random numbers" Description:
 With the powershell script file here, the ID information of the RustDesk remote connection program will be converted into a value created from 9-digit random numbers.
 
 There is no need to reboot.
 
 
-	Set the RustDesk ID to the value you specify Description:
+	"Set the RustDesk ID to the value you specify" Description:
 
 With the powershell script file here, the ID information of the RustDesk remote connection program will be converted to the value specified by the user.
 
