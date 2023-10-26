@@ -1,5 +1,0 @@
-PowerShell.exe -ExecutionPolicy Bypass -File RustDesk_ID_Random.ps1
-
-PowerShell.exe -ExecutionPolicy Bypass -File RustDesk_ID_Host.ps1
-
-PowerShell.exe -ExecutionPolicy Bypass -File RustDesk_ID_UserDefined.ps1
