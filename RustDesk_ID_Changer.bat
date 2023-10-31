@@ -13,6 +13,19 @@ goto :eof
 ::===============================================================================================================
 :Main
 cls
+if exist "C:\Program Files\RustDesk\rustdesk.exe" (
+cd "C:\Program Files\RustDesk\"
+for /f "delims=" %%i in ('rustdesk.exe --get-id ^| more') do set rustdesk_id=%%i
+goto :Run
+) else (
+echo.
+echo RustDesk is not installed, install RustDesk first.
+echo.
+echo Press any key to exit.
+pause >nul
+exit
+)
+:Run
 pushd %temp% >nul 2>&1
 echo.
 echo ==========================================================================================
@@ -43,7 +56,7 @@ echo Stop-Service RustDesk > RustDesk_ID_Host.ps1
 echo taskkill /im rustdesk.exe /f >> RustDesk_ID_Host.ps1
 echo $id = Get-Content "C:\Windows\ServiceProfiles\LocalService\AppData\Roaming\RustDesk\config\RustDesk.toml" ^| Select-Object -Index 0 >> RustDesk_ID_Host.ps1
 echo $hostname = hostname >> RustDesk_ID_Host.ps1
-echo Write-Host "Current ID: $id" >> RustDesk_ID_Host.ps1
+echo Write-Host "Current ID: %rustdesk_id%" >> RustDesk_ID_Host.ps1
 echo $newId = "id = '$hostname'" >> RustDesk_ID_Host.ps1
 echo Write-Host "New ID: $newId" >> RustDesk_ID_Host.ps1
 echo $fileContent = Get-Content -Path "C:\Windows\ServiceProfiles\LocalService\AppData\Roaming\RustDesk\config\RustDesk.toml" >> RustDesk_ID_Host.ps1
@@ -51,6 +64,7 @@ echo $newContent = $fileContent -replace [regex]::Escape($id), $newId >> RustDes
 echo $newContent ^| Set-Content -Path "C:\Windows\ServiceProfiles\LocalService\AppData\Roaming\RustDesk\config\RustDesk.toml" >> RustDesk_ID_Host.ps1
 echo Restart-Service RustDesk >> RustDesk_ID_Host.ps1
 powershell.exe -ExecutionPolicy Bypass -File RustDesk_ID_Host.ps1
+start "" "C:\Program Files\RustDesk\rustdesk.exe" --tray
 goto :done
 ::===============================================================================================================
 :ID_Random
@@ -59,7 +73,7 @@ echo Stop-Service RustDesk > RustDesk_ID_Random.ps1
 echo taskkill /im rustdesk.exe /f >> RustDesk_ID_Random.ps1
 echo $randomId = -join ((48..57) ^| Get-Random -Count 9 ^| ForEach-Object {[char]$_}) >> RustDesk_ID_Random.ps1
 echo $id = Get-Content "C:\Windows\ServiceProfiles\LocalService\AppData\Roaming\RustDesk\config\RustDesk.toml" ^| Select-Object -Index 0 >> RustDesk_ID_Random.ps1
-echo Write-Host "Current ID: $id" >> RustDesk_ID_Random.ps1
+echo Write-Host "Current ID: %rustdesk_id%" >> RustDesk_ID_Random.ps1
 echo $newId = "id = '$randomId'" >> RustDesk_ID_Random.ps1
 echo Write-Host "New ID: $newId" >> RustDesk_ID_Random.ps1
 echo $fileContent = Get-Content -Path "C:\Windows\ServiceProfiles\LocalService\AppData\Roaming\RustDesk\config\RustDesk.toml" >> RustDesk_ID_Random.ps1
@@ -67,6 +81,7 @@ echo $newContent = $fileContent -replace [regex]::Escape($id), $newId >> RustDes
 echo $newContent ^| Set-Content -Path "C:\Windows\ServiceProfiles\LocalService\AppData\Roaming\RustDesk\config\RustDesk.toml" >> RustDesk_ID_Random.ps1
 echo Restart-Service RustDesk >> RustDesk_ID_Random.ps1
 powershell.exe -ExecutionPolicy Bypass -File RustDesk_ID_Random.ps1
+start "" "C:\Program Files\RustDesk\rustdesk.exe" --tray
 goto :done
 ::===============================================================================================================
 :ID_UserDefined
@@ -74,8 +89,11 @@ echo.
 echo Stop-Service RustDesk > RustDesk_ID_UserDefined.ps1
 echo taskkill /im rustdesk.exe /f >> RustDesk_ID_UserDefined.ps1
 echo $id = Get-Content "C:\Windows\ServiceProfiles\LocalService\AppData\Roaming\RustDesk\config\RustDesk.toml" ^| Select-Object -Index 0 >> RustDesk_ID_UserDefined.ps1
+echo THE NEW RUSTDESK ID VALUE MUST BE AT LEAST 6 CHARACTERS
+timeout /t 2 >nul 2>&1
+echo.
 echo $newId = Read-Host "Enter RustDesk ID" >> RustDesk_ID_UserDefined.ps1
-echo Write-Host "Current ID: $id" >> RustDesk_ID_UserDefined.ps1
+echo Write-Host "Current ID: %rustdesk_id%" >> RustDesk_ID_UserDefined.ps1
 echo $newId = "id = '$newId'" >> RustDesk_ID_UserDefined.ps1
 echo Write-Host "New ID: $newId" >> RustDesk_ID_UserDefined.ps1
 echo $fileContent = Get-Content -Path "C:\Windows\ServiceProfiles\LocalService\AppData\Roaming\RustDesk\config\RustDesk.toml" >> RustDesk_ID_UserDefined.ps1
@@ -83,6 +101,7 @@ echo $newContent = $fileContent -replace [regex]::Escape($id), $newId >> RustDes
 echo $newContent ^| Set-Content -Path "C:\Windows\ServiceProfiles\LocalService\AppData\Roaming\RustDesk\config\RustDesk.toml" >> RustDesk_ID_UserDefined.ps1
 echo Restart-Service RustDesk >> RustDesk_ID_UserDefined.ps1
 powershell.exe -ExecutionPolicy Bypass -File RustDesk_ID_UserDefined.ps1
+start "" "C:\Program Files\RustDesk\rustdesk.exe" --tray
 goto :done
 ::===============================================================================================================
 :done
